@@ -3,6 +3,8 @@
   remote_user: root
   roles:
     - rocky8
+    - nomad
+    - docker
 
 - hosts:
   - hcloud:&consul-servers_group

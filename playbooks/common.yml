@@ -1,6 +1,23 @@
 - hosts:
-    - hetzner
+    - hcloud
   remote_user: root
   roles:
     - rocky8
+
+- hosts:
+  - hcloud:!consul-servers_group
+  remote_user: root
+  roles:
     - consul
+  vars:
+    consul_server: False
+  
+- hosts:
+  - hcloud:&consul-servers_group
+  remote_user: root
+  roles:
+    - consul
+  vars:
+    consul_server: True
+
+    

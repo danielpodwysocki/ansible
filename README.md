@@ -19,6 +19,12 @@ Original ansible-hcloud-inventory: https://github.com/hg8496/ansible-hcloud-inve
 
 In order to use the dynamic inventory, you need to set the HCLOUD_TOKEN to a Hetzner Cloud API key - it's highly reccomended you set its permissions to "read only" for this.
 
+Example playbook execution:
+```
+export HCLOUD_TOKEN=<your_token>
+ansible-playbook playbooks/common.yaml
+```
+
 ## Label scheme
 
 Due to how ansible-hcloud-inventory processes labels, we need to use the below KEY: VALUE format:

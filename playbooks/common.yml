@@ -1,0 +1,6 @@
+- hosts:
+    - hetzner
+  remote_user: root
+  roles:
+    - rocky8
+    - consul

@@ -1,0 +1,10 @@
+- name: Add HashiCorp repos
+  dnf:
+    - name: 
+
+- name: Install packages
+  dnf:
+    - name:
+	
+    - state: present 
+

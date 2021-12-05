@@ -1,0 +1,46 @@
+- name: Add the Hashicorp repository
+  yum_repository:
+    name: hashicorp
+    description: Hashicorp repo
+    baseurl: https://rpm.releases.hashicorp.com/RHEL/$releasever/$basearch/stable
+    gpgkey: https://rpm.releases.hashicorp.com/gpg
+    gpgcheck: yes
+
+- name: Install consul
+  dnf:
+    name: consul
+    state: present
+
+- name: Create the consul log directory
+  file:
+    path: /var/log/consul
+    state: directory
+    owner: consul
+    group: root
+    mode: '0750' 
+
+- name: Start and enable the service
+  service:
+    name: consul
+    state: started
+    enabled: yes
+
+
+- name: deploy the consul-server.hcl
+  copy:
+    src: consul-server.hcl
+    dest: /etc/consul.d/consul-server.hcl
+    owner: consul
+    group: consul
+  notify: Reload the consul config
+  when: consul_server
+
+- name: deploy the consul.hcl
+  copy:
+    src: consul.hcl
+    dest: /etc/consul.d/consul.hcl
+    owner: consul
+    group: consul
+  notify: Reload the consul config
+  when: not consul_server
+

@@ -1,0 +1,9 @@
+hetzner:
+    hosts:
+      188.34.177.33:
+
+consul-servers:
+    hosts:
+     188.34.177.33: 
+    vars:
+      consul_server: True

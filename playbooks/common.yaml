@@ -3,7 +3,6 @@
   remote_user: root
   roles:
     - rocky8
-    - nomad
     - docker
 
 - hosts:
@@ -15,12 +14,27 @@
     consul_server: True
 
 - hosts:
-  - hcloud:!consul-servers_group
+  - hcloud:&nomad-servers_group
+  remote_user: root
+  roles:
+    - nomad
+  vars:
+    nomad_server: True
+
+- hosts:
+  - hcloud:&vault-servers_group
+  remote_user: root
+  roles:
+    - vault
+
+- hosts:
+  - hcloud:!consul-servers_group:!nomad-servers_group
   remote_user: root
   roles:
     - consul
+    - nomad
   vars:
     consul_server: False
-  
+    nomad_server: False  
 
     

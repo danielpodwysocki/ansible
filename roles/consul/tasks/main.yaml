@@ -29,7 +29,7 @@
 - name: deploy the consul-server.hcl
   copy:
     src: consul-server.hcl
-    dest: /etc/consul.d/consul-server.hcl
+    dest: /etc/consul.d/consul.hcl
     owner: consul
     group: consul
   notify: Reload the consul config

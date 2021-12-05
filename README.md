@@ -5,3 +5,7 @@
 
 + consul - depending on whether the consul_server var is set, set up a consul server or a consul agent
 
+
+# Requirments files
++ requirements.txt - necessary python modules
++ requirements.yaml - ansible galaxy dependencies

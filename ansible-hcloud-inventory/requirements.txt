@@ -1,4 +1,2 @@
-hcloud
-ansible
 requests
 pyyaml

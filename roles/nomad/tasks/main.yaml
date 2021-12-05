@@ -1,0 +1,37 @@
+- name: Add the Hashicorp repository
+  yum_repository:
+    name: hashicorp
+    description: Hashicorp repo
+    baseurl: https://rpm.releases.hashicorp.com/RHEL/$releasever/$basearch/stable
+    gpgkey: https://rpm.releases.hashicorp.com/gpg
+    gpgcheck: yes
+
+- name: Install nomad
+  dnf:
+    name: nomad
+    state: present
+
+- name: deploy the nomad-server.hcl
+  copy:
+    src: nomad-server.hcl
+    dest: /etc/nomad.d/nomad.hcl
+    owner: nomad
+    group: nomad
+  notify: Restart the nomad service
+  when: nomad_server
+
+- name: deploy the nomad.hcl
+  copy:
+    src: nomad.hcl
+    dest: /etc/nomad.d/nomad.hcl
+    owner: nomad
+    group: nomad
+  notify: Restart the nomad service
+  when: not nomad_server
+
+- name: Start and enable the nomad service
+  service:
+    name: nomad
+    state: started
+    enabled: yes
+

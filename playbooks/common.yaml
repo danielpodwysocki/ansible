@@ -5,6 +5,14 @@
     - rocky8
 
 - hosts:
+  - hcloud:&consul-servers_group
+  remote_user: root
+  roles:
+    - consul
+  vars:
+    consul_server: True
+
+- hosts:
   - hcloud:!consul-servers_group
   remote_user: root
   roles:
@@ -12,12 +20,5 @@
   vars:
     consul_server: False
   
-- hosts:
-  - hcloud:&consul-servers_group
-  remote_user: root
-  roles:
-    - consul
-  vars:
-    consul_server: True
 
     

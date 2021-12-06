@@ -14,7 +14,7 @@
 - name: deploy the nomad-server.hcl
   copy:
     src: nomad-server.hcl
-    dest: /etc/nomad.d/nomad.hcl
+    dest: /etc/nomad.d/nomad-server.hcl
     owner: nomad
     group: nomad
   notify: Restart the nomad service
@@ -27,7 +27,6 @@
     owner: nomad
     group: nomad
   notify: Restart the nomad service
-  when: not nomad_server
 
 - name: Start and enable the nomad service
   service:

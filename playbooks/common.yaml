@@ -1,40 +1,25 @@
+#- hosts:
+#    - hcloud
+#  remote_user: root
+#  roles:
+#    - rocky8
+#    - docker
+#
+# This play needs to run before the one for the nodes, to ensure the join_token var has been registered
 - hosts:
-    - hcloud
+  - hcloud:&swarm-managers_group
   remote_user: root
   roles:
-    - rocky8
-    - docker
-
-- hosts:
-  - hcloud:&consul-servers_group
-  remote_user: root
-  roles:
-    - consul
+    - swarm
   vars:
-    consul_server: True
-
-- hosts:
-  - hcloud:&nomad-servers_group
-  remote_user: root
-  roles:
-    - nomad
-  vars:
-    nomad_server: True
-
-- hosts:
-  - hcloud:&vault-servers_group
-  remote_user: root
-  roles:
-    - vault
-
-- hosts:
-  - hcloud:!consul-servers_group:!nomad-servers_group
-  remote_user: root
-  roles:
-    - consul
-    - nomad
-  vars:
-    consul_server: False
-    nomad_server: False  
+    swarm_manager: True
 
     
+- hosts:
+  - hcloud:!swarm-managers_group
+  remote_user: root
+  roles:
+    - swarm
+  vars:
+    swarm_manager: False
+

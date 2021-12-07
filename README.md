@@ -6,8 +6,8 @@
 
 
 # Requirments files
-+ requirements.txt - necessary python modules
-+ requirements.yaml - ansible galaxy dependencies
++ requirements.txt - necessary python modules - to install run `pip3 install -r requirements.txt`
++ requirements.yaml - ansible galaxy dependencies - to install them, run `ansible-galaxy install -r requirements.yaml`
 
 # Dynamic inventory
 

@@ -1,0 +1,7 @@
+version: "3"
+
+services:
+  traefik:
+    ports:
+      - "80:80"
+    image: "traefik:v2.5.4"

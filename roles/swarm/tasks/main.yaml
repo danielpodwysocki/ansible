@@ -1,8 +1,11 @@
-# docker_swarm dependency
+# community.docker.docker_stack and docker_swarm dependencies 
 - name: Install the python module for docker
   pip:
-    name: docker
+    name: 
+      - docker
+      - jsondiff
     state: present
+
 
 - name: Init a new swarm with default parameters
   docker_swarm:
@@ -22,3 +25,26 @@
     join_token: "{{ hostvars['xardas']['join_token']['stdout'] }}"
   when: not swarm_manager
  
+- name: Create the /opt/stacks directory
+  file:
+    path: /opt/stacks
+    state: directory
+    owner: root
+    group: root
+    mode: 750
+
+- name: Upload the compose file
+  copy:
+    src: test-stack.yaml
+    dest: /opt/stacks/test-stack.yaml
+    owner: root
+    group: root
+    mode: 750
+
+- name: Deploy the stack
+  community.docker.docker_stack:
+    state: present
+    name: test-stack
+    compose:
+      - /opt/stacks/test-stack.yaml
+

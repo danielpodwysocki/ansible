@@ -47,5 +47,5 @@
     name: test-stack
     compose:
       - /opt/stacks/test-stack.yaml
-  when: not swarm_manager
+  when: swarm_manager
 

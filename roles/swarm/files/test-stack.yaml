@@ -5,3 +5,8 @@ services:
     ports:
       - "80:80"
     image: "traefik:v2.5.4"
+    deploy:
+      placement:
+        constraints:
+          - "node.hostname==docker01"
+

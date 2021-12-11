@@ -3,10 +3,6 @@
   tags:
     - security
 
-- include: filesystem.yaml
-  tags:
-    - filesystem
-
 #- include: packages.yaml
 #  tags:
 #    - packages

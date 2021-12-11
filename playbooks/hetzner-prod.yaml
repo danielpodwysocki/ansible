@@ -15,11 +15,11 @@
     swarm_manager: True
 
     
-- hosts:
-  - hcloud:!swarm-managers_group
-  remote_user: root
-  roles:
-    - swarm
-  vars:
-    swarm_manager: False
-
+#- hosts:
+#  - hcloud:!swarm-managers_group
+#  remote_user: root
+#  roles:
+#    - swarm
+#  vars:
+#    swarm_manager: False
+#

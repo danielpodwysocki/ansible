@@ -8,7 +8,6 @@
 ## Roles that won't see any attention anymore: 
 
 + nomad - sets up Nomad nodes and joins them together using Consul - will not get any new updates, went with Kubernetes instead
-+ swarm - sets up my swarm cluster and deploys the stacks via Ansible - no longer being updated, went with Kubernetes instead
 
 
 ## Requirments files

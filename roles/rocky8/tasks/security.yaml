@@ -8,8 +8,19 @@
     name: fail2ban
     state: present
 
+- name: Deploy the fail2ban config
+  copy:
+    src: fail2ban/jail.local
+    dest: /etc/fail2ban/jail.local
+    owner: root
+    group: root
+    mode: 750
+  notify: Restart fail2ban
+
 - name: Enable fail2ban
   service:
     name: fail2ban
     state: started
     enabled: yes
+
+

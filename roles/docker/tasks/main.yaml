@@ -1,3 +1,4 @@
+---
 - name: Add the Docker CE repository
   yum_repository:
     name: docker-ce
@@ -14,8 +15,31 @@
       - containerd.io
     state: present
 
+- name: Install the docker & docker-compose python modules
+  pip:
+    name:
+      - docker
+      - docker-compose
+    state: present
+
 - name: Enable and start the service
   service:
     name: docker
     state: started
     enabled: yes
+
+- name: Create the /opt/compose directory
+  file:
+    path: /opt/compose
+    state: directory
+    owner: root
+    group: root
+    mode: 0700
+
+- name: Deploy the compose file
+  copy:
+    src: "compose/{{ compose_file }}"
+    dest: "/opt/compose/{{ compose_file }}"
+  when: compose_file is defined
+  notify: 
+    - Apply the compose file

@@ -1,25 +1,6 @@
-#- hosts:
-#    - hcloud
-#  remote_user: root
-#  roles:
-#    - rocky8
-#    - docker
-#
-# This play needs to run before the one for the nodes, to ensure the join_token var has been registered
 - hosts:
-  - hcloud:&swarm-managers_group
+    - hcloud
   remote_user: root
   roles:
-    - swarm
-  vars:
-    swarm_manager: True
+    - rocky8
 
-    
-#- hosts:
-#  - hcloud:!swarm-managers_group
-#  remote_user: root
-#  roles:
-#    - swarm
-#  vars:
-#    swarm_manager: False
-#

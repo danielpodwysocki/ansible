@@ -1,0 +1,22 @@
+- name: Install nfs server package
+  dnf:
+    state: present
+    name: nfs-utils
+
+- name: Start and enable nfs-server, rpcbind
+  service:
+    state: started
+    enabled: yes
+    name: "{{ item }}"
+  with_items:
+    - nfs-server
+    - rpcbind
+
+- name: Deploy the exports
+  copy:
+    src: exports/{{ nfs_exports_config }}
+    dest: /etc/exports
+    owner: root
+    group: root
+    mode: 0440
+  notify: Reload the exports

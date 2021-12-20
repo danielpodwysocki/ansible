@@ -1,6 +1,15 @@
+#- hosts:
+#    - hcloud
+#  remote_user: root
+#  roles:
+#    - rocky8
+#    - k3s
+
 - hosts:
-    - hcloud
+  - xardas
   remote_user: root
   roles:
-    - rocky8
+    - nfs-server
+  vars:
+    nfs_exports_config: exports_xardas
 

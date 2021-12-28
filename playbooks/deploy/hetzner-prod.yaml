@@ -1,9 +1,9 @@
-#- hosts:
-#    - hcloud
-#  remote_user: root
-#  roles:
-#    - rocky8
-#    - k3s
+- hosts:
+    - hcloud
+  remote_user: root
+  roles:
+    - rocky8
+    - k3s
 
 - hosts:
   - xardas

@@ -2,3 +2,5 @@ hcloud
 ansible
 requests
 pyyaml
+boto3
+botocore

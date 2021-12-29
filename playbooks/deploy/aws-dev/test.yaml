@@ -1,0 +1,11 @@
+---
+  - name: "Testing the Ansible & AWS Systems Manager integration"
+    hosts: localhost
+    connection: local 
+    tasks:
+
+    - name: "create a file"
+      ansible.builtin.file:
+        path: /testfile
+        state: touch
+

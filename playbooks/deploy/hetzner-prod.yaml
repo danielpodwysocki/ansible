@@ -3,13 +3,12 @@
   remote_user: root
   roles:
     - rocky8
-    - k3s
 
 - hosts:
   - xardas
   remote_user: root
   roles:
-    - nfs-server
+    - haproxy
   vars:
-    nfs_exports_config: exports_xardas
+    haproxy_conf: xardas_haproxy.cfg
 

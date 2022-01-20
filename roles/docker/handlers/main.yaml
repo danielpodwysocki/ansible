@@ -1,0 +1,6 @@
+- name: Apply the compose file
+  community.docker.docker_compose:
+    project_src: /opt/compose
+    files:
+      - "{{ compose_file }}"
+

@@ -1,4 +1,0 @@
-- include_tasks: deployment.yaml
-
-- include_tasks: jobs.yaml
-  when: nomad_server

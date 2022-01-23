@@ -1,0 +1,7 @@
+- hosts:
+    - all
+  remote_user: opc
+  become: yes
+  roles:
+    - rhel_common
+  

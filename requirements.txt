@@ -4,3 +4,4 @@ requests
 pyyaml
 boto3
 botocore
+oci

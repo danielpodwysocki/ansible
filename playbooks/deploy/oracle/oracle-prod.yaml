@@ -5,3 +5,11 @@
   roles:
     - rhel_common
   
+- hosts:
+    - tag_name=pyrokar
+  remote_user: opc
+  become: yes
+  roles:
+    - haproxy
+  vars:
+    haproxy_conf: pyrokar_haproxy.cfg

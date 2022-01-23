@@ -2,13 +2,13 @@
     - hcloud
   remote_user: root
   roles:
-    - rocky8
+    - rhel_common
 
 - hosts:
-  - xardas
+    - xardas
   remote_user: root
   roles:
-    - haproxy
+    - nfs-server
+    - k3s
   vars:
-    haproxy_conf: xardas_haproxy.cfg
-
+    nfs_exports_config: exports_xardas 

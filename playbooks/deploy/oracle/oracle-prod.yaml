@@ -13,3 +13,21 @@
     - haproxy
   vars:
     haproxy_conf: pyrokar_haproxy.cfg
+
+- hosts:
+    - tag_name=serpentes
+  remote_user: opc
+  become: yes
+  roles:
+    - docker
+    - lvm
+  vars:
+    vgs:
+      - vg: storage
+        pvs:
+          - /dev/sdb
+    lvs:
+      - lv: wikijs
+        vg: storage
+        size: 10g
+

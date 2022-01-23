@@ -1,7 +1,23 @@
+- name: Check if we're using Oracle Linux
+  stat:
+    path: /etc/oracle-release
+  register: oracle_release
+
 - name: Enable EPEL
   dnf:
     name: epel-release
     state: present
+  when: not oracle_release
+
+- name: Enable the Oracle EPEL repo
+  yum_repository:
+    name: ol8_developer_EPEL
+    description: Oracle's EPEL repository
+    baseurl: https://yum$ociregion.$ocidomain/repo/OracleLinux/OL8/developer/EPEL/$basearch/
+    gpgkey: file:///etc/pki/rpm-gpg/RPM-GPG-KEY-oracle
+    gpgcheck: yes
+    enabled: yes
+  when: oracle_release
 
 - name: Install fail2ban
   dnf:

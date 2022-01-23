@@ -1,0 +1,7 @@
+---
+- include: filesystem.yaml
+- include: packages.yaml
+- include: services.yaml
+- include: k3s.yaml
+
+

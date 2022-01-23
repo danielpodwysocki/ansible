@@ -1,0 +1,11 @@
+---
+- name: Download the installation script
+  get_url:
+    url: https://get.k3s.io
+    dest: /opt/deploy_k3s.sh
+    mode: '550'
+
+- name: Deploy k3s
+  command:
+    cmd: "/opt/deploy_k3s.sh --disable traefik local-storage"
+

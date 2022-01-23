@@ -1,0 +1,8 @@
+- name: Install all the required packages
+  dnf:
+    state: present
+    name:
+      # longhorn prerequisites
+      - iscsi-initiator-utils
+      - nfs-utils
+

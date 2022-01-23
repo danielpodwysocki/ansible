@@ -1,0 +1,6 @@
+- name: Ensure iscsid is enabled&running
+  service:
+    name: iscsid
+    state: started
+    enabled: yes
+

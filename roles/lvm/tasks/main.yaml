@@ -1,0 +1,25 @@
+---
+- name: Ensure lvm is installed
+  yum:
+    name: lvm2
+    state: present
+
+- name: Create the volume groups
+  community.general.lvg:
+    pvs: "{{ item.pvs }}"
+    vg: "{{ item.vg }}"
+  with_list: "{{ vgs }}"
+
+- name: Create the logical volumes
+  community.general.lvol:
+    vg: "{{ item.vg }}"
+    lv: "{{ item.lv }}"
+    size: "{{ item.size }}"
+  with_list: "{{ lvs }}"
+  
+- name: Format the logical volumes
+  community.general.filesystem:
+    fstype: "{{ item.fstype }}"
+    dev: "/dev/{{ item.vg }}/{{ item.lv }}"
+  with_list: "{{ lvs }}"
+    

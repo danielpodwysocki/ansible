@@ -1,0 +1,14 @@
+---
+- name: ensure the target exists
+  file:
+    path: "{{ item.target }}"
+    state: directory
+  with_items: "{{ fstab_mounts }}" 
+
+- name: mount the devices to targets
+  ansible.posix.mount:
+    path: "{{ item.target }}"
+    src: "{{ item.device }}"
+    state: mounted
+    fstype: ext4
+  with_items: "{{ fstab_mounts }}"

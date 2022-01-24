@@ -57,3 +57,17 @@ direnv allow .
 ```
 
 It's recommended to encrypt this file at rest when you're not working on the repo.
+
+## Encrypting variables
+
+```
+ansible-vault encrypt oracle-prod-secrets.yaml
+```
+
+## Deployment
+
+```
+# oracle-prod
+ansible-playbook --ask-vault-pass -e playbooks/deploy/oracle/oracle-prod-secrets.yaml -i playbooks/deploy/oracle/inventory.oci.yaml playbooks/deploy/oracle/oracle-prod.yaml
+
+```

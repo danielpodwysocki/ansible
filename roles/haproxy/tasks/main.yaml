@@ -1,3 +1,6 @@
+---
+- include: certbot.yaml
+
 - name: Install haproxy
   yum:
     name: haproxy

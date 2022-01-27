@@ -1,0 +1,2 @@
+{% for item in certbot_domains %}{{ item.domain }}
+{% endfor %}

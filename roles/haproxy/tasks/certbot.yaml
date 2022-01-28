@@ -43,8 +43,8 @@
 
 - name: Deploy the script to create fullchains and reload HAProxy
   copy:
-    src: create_fullchains.sh 
-    dest: /etc/cron.weekly/create_fullchains.sh
+    src: create_certs.sh 
+    dest: /etc/cron.weekly/create_certs.sh
     owner: root
     group: root
     mode: "0550"

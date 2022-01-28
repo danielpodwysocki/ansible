@@ -7,6 +7,8 @@
 # It expects a directory in /etc/ssl/$domain to already exist
 # The output will be in /etc/ssl/$domain/$domain.pem
 #
+# Upon creating the certs, this script will restart the HAProxy service
+#
 # author: danielpodwysocki (https://gitlab.com/danielpodwysocki)
 # date: 2022-01
 
@@ -23,4 +25,5 @@ do
 done
 
 
+systemctl restart haproxy
 

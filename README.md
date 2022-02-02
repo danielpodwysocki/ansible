@@ -61,13 +61,16 @@ It's recommended to encrypt this file at rest when you're not working on the rep
 ## Encrypting variables
 
 ```
-ansible-vault encrypt oracle-prod-secrets.yaml
+ansible-vault encrypt_string
 ```
 
 ## Deployment
 
 ```
 # oracle-prod
-ansible-playbook --ask-vault-pass -e playbooks/deploy/oracle/oracle-prod-secrets.yaml -i playbooks/deploy/oracle/inventory.oci.yaml playbooks/deploy/oracle/oracle-prod.yaml
+ansible-playbook --ask-vault-pass  -i playbooks/deploy/oracle/inventory.oci.yaml playbooks/deploy/oracle/oracle-prod.yaml
+
+# hetzner-prod
+ansible-playbook playbooks/deploy/hetzner-prod.yaml
 
 ```

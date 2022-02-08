@@ -7,5 +7,5 @@
 
 - name: Deploy k3s
   command:
-    cmd: "/opt/deploy_k3s.sh --disable traefik local-storage"
+    cmd: "/opt/deploy_k3s.sh --disable traefik --disable local-storage"
 

@@ -5,10 +5,6 @@
 + consul - depending on whether the consul_server var is set, set up a consul server or a consul agent
 
 
-## Roles that won't see any attention anymore: 
-
-+ nomad - sets up Nomad nodes and joins them together using Consul - will not get any new updates, went with Kubernetes instead
-
 
 ## Requirments files
 + requirements.txt - necessary python modules - to install run `pip3 install -r requirements.txt`

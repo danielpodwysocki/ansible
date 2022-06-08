@@ -7,7 +7,7 @@
   dnf:
     name: epel-release
     state: present
-  when: not oracle_release
+  when: not oracle_release.stat.exists
 
 - name: Enable the Oracle EPEL repo
   yum_repository:
@@ -17,7 +17,7 @@
     gpgkey: file:///etc/pki/rpm-gpg/RPM-GPG-KEY-oracle
     gpgcheck: yes
     enabled: yes
-  when: oracle_release
+  when: oracle_release.stat.exists
 
 - name: Install fail2ban
   dnf:

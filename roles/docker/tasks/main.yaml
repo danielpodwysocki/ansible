@@ -37,7 +37,10 @@
     mode: 0700
 
 - name: Deploy the compose file
-  copy:
+  template:
+    owner: root
+    group: root
+    mode: '0600'
     src: "compose/{{ compose_file }}"
     dest: "/opt/compose/{{ compose_file }}"
   when: compose_file is defined

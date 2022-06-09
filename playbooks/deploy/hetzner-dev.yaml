@@ -1,0 +1,7 @@
+---
+- hosts:
+    - hcloud
+  remote_user: root
+  roles:
+    - rhel_common
+

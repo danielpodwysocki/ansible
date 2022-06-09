@@ -67,6 +67,9 @@ ansible-vault encrypt_string
 ansible-playbook --ask-vault-pass  -i playbooks/deploy/oracle/inventory.oci.yaml playbooks/deploy/oracle/oracle-prod.yaml
 
 # hetzner-prod
-ansible-playbook playbooks/deploy/hetzner-prod.yaml
+export HCLOUD_TOKEN=$HCLOUD_TOKEN_PROD && ansible-playbook playbooks/deploy/hetzner-prod.yaml
+
+#hetzner-dev
+export HCLOUD_TOKEN=$HCLOUD_TOKEN_DEV && ansible-playbook playbooks/deploy/hetzner-dev.yaml
 
 ```

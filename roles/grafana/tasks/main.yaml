@@ -1,0 +1,30 @@
+---
+- name: add the Grafana repository
+  copy:
+    src: grafana_rpm.repo
+    dest: /etc/yum.repos.d/grafana_rpm.repo
+    mode: 0644
+    owner: root
+    group: root
+
+- name: Install grafana
+  package:
+    name: grafana
+    state: present
+
+- name: Template out and deploy the grafana.ini 
+  template:
+    src: "{{ grafana_ini_filename }}"
+    dest: /etc/grafana/grafana.ini
+    mode: 0640
+    owner: root
+    group: grafana
+  when: grafana_ini_filename is defined
+  notify: Restart the grafana-server service
+
+- name: Start and enable grafana-server
+  service:
+    name: grafana-server
+    state: started
+    enabled: yes
+

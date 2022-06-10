@@ -1,0 +1,9 @@
+---
+- hosts:
+    - hcloud
+  remote_user: root
+  roles:
+    - rhel_common
+    - grafana
+  vars:
+    grafana_ini_filename: grafana.ini.xardas_dev

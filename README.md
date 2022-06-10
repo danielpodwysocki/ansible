@@ -54,7 +54,13 @@ direnv allow .
 ```
 
 It's recommended to encrypt this file at rest when you're not working on the repo.
+My .envrc is currently looking like this:
+```
+export HCLOUD_TOKEN_DEV=<api token>
+export HCLOUD_TOKEN_PROD=<api_token>
 
+```
+This allows to easily switch the targeted environment by running `export HCLOUD_TOKEN=<$HCLOUD_TOKEN_PROD | $HCLOUD_TOKEN_DEV>`
 ## Encrypting variables
 
 ```

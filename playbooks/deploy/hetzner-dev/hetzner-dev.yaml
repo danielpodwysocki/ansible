@@ -4,6 +4,14 @@
   remote_user: root
   roles:
     - rhel_common
+    - geerlingguy.docker
+
+- hosts:
+    - hcloud
+  remote_user: root
+  roles:
     - grafana
+    - prometheus
   vars:
     grafana_ini_filename: grafana.ini.xardas_dev
+

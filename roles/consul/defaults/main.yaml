@@ -1,3 +1,4 @@
 ---
 consul_server: False
 consul_subnet: 10.0.0.0/8
+consul_retry_join: [10.0.0.10]

@@ -1,0 +1,5 @@
+---
+- name: create /storage
+  file:
+    state: directory
+    path: /storage

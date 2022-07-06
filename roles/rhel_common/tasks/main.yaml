@@ -1,9 +1,20 @@
 ---
+- include: storage.yaml
+  tags:
+    - storage_common
+
 - include: security.yaml
   tags:
-    - security
+    - security_common
 
 - include: packages.yaml
   tags:
-    - packages
+    - packages_common
 
+- include: ansible.yaml
+  tags:
+    - ansible_common
+
+- include: docker.yaml
+  tags:
+    - docker_common

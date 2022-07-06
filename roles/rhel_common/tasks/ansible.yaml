@@ -1,0 +1,5 @@
+---
+- name: install modules ansible needs for docker
+  pip:
+    name: docker
+

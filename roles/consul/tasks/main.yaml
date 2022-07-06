@@ -20,7 +20,7 @@
     mode: '0750' 
 
 - name: deploy the consul-server.hcl
-  copy:
+  template:
     src: consul-server.hcl
     dest: /etc/consul.d/consul-server.hcl
     owner: consul
@@ -29,7 +29,7 @@
   when: consul_server
 
 - name: deploy the consul.hcl
-  copy:
+  template:
     src: consul.hcl
     dest: /etc/consul.d/consul.hcl
     owner: consul

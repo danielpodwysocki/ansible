@@ -2,3 +2,6 @@ collections:
 - community.general
 - amazon.aws
 - oracle.oci
+roles:
+- name: geerlingguy.docker
+

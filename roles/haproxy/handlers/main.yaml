@@ -1,3 +1,0 @@
-- name: Reload the haproxy config
-  service: name=haproxy state=restarted
-  

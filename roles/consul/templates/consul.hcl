@@ -8,4 +8,4 @@ log_file = "/var/log/consul/consul.log"
 bind_addr = {% raw %}"{{ GetPrivateInterfaces | include \"network\" \"{% endraw %}{{ consul_subnet }}{% raw %}\" | attr \"address\" }}"{% endraw %}
 
 # retry_join - continously try to join to a server at this IP
-retry_join = {{ consul_retry_join }}
+retry_join = ["{{ consul_retry_join }}"]

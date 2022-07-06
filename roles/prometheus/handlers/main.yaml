@@ -1,0 +1,6 @@
+---
+- name: Reload the prometheus config
+  community.docker.docker_container_exec:
+    container: prometheus
+    command: pkill -HUP prometheus
+

@@ -5,7 +5,7 @@ data_dir = "/opt/consul"
 log_file = "/var/log/consul/consul.log"
 
 # only bind to the private addresses within 10.0.0.0/8
-bind_addr = "{{ GetPrivateInterfaces | include \"network\" \"10.0.0.0/8\" | attr \"address\" }}"
+bind_addr = {% raw %}"{{ GetPrivateInterfaces | include \"network\" \"{% endraw %}{{ consul_subnet }}{% raw %}\" | attr \"address\" }}"{% endraw %}
 
 # retry_join - continously try to join to a server at this IP
 retry_join = ["10.0.0.10"]

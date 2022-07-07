@@ -3,8 +3,8 @@
     - hcloud
   remote_user: root
   roles:
-    - rhel_common
     - geerlingguy.docker
+    - rhel_common
     - role: consul
       tags: role_consul
   vars:

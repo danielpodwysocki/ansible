@@ -38,6 +38,15 @@
     group: consul
   notify: Reload the consul config
 
+- name: deploy services_monitoring.hcl
+  file:
+    src: services_monitoring.hcl
+    dest: /etc/consul.d/services_monitoring.hcl
+    owner: consul
+    group: consul
+  notify: Reload the consul config
+
+
 - name: Start and enable the service
   service:
     name: consul

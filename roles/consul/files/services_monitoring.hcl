@@ -5,7 +5,7 @@ service {
 }
 
 service {
-  name = "cadvisor""
+  name = "cadvisor"
   tags = ["cadvisor", "prometheus"]
   port = 8080
 }

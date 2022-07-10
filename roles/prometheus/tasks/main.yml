@@ -10,6 +10,12 @@
     owner: prometheus
     state: directory
 
+- name: deploy prometheus.yml
+  copy:
+    src: prometheus.yml
+    dest: /etc/prometheus.yml
+  notify: Reload the prometheus config
+
 - name: deploy the prometheus container
   docker_container:
     image: prom/prometheus:v2.36.2  
@@ -22,11 +28,4 @@
       - /storage/prometheus:/prometheus
     ports:
       - "9090:9090"
-
-- name: deploy prometheus.yml
-  copy:
-    src: prometheus.yml
-    dest: /etc/prometheus.yml
-  notify: Reload the prometheus config
-
 

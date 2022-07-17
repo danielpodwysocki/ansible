@@ -1,0 +1,5 @@
+---
+- include: lvm.yml
+  tags:
+    - role_lvm
+

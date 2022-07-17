@@ -4,7 +4,7 @@ datacenter = "hz1"
 data_dir = "/opt/consul"
 log_file = "/var/log/consul/consul.log"
 
-# only bind to the private addresses within 10.0.0.0/8
+# only bind to the private addresses within {{ consul_subnet }}
 bind_addr = {% raw %}"{{ GetPrivateInterfaces | include \"network\" \"{% endraw %}{{ consul_subnet }}{% raw %}\" | attr \"address\" }}"{% endraw %}
 
 # retry_join - continously try to join to a server at this IP

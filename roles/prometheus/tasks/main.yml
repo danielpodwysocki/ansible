@@ -1,31 +1,5 @@
 ---
-- name: create a prometheus user
-  user:
-    name: prometheus
-    uid: 1001
-
-- name: create a prometheus dir
-  file:
-    path: /storage/prometheus
-    owner: prometheus
-    state: directory
-
-- name: deploy prometheus.yml
-  copy:
-    src: prometheus.yml
-    dest: /etc/prometheus.yml
-  notify: Reload the prometheus config
-
-- name: deploy the prometheus container
-  docker_container:
-    image: prom/prometheus:v2.36.2  
-    name: prometheus
-    user: 1001
-    container_default_behavior: compatibility
-    restart_policy: always
-    volumes:
-      - /etc/prometheus.yml:/etc/prometheus/prometheus.yml
-      - /storage/prometheus:/prometheus
-    ports:
-      - "9090:9090"
+- include: prometheus.yml
+  tags:
+    - role_prometheus
 

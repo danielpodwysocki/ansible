@@ -20,6 +20,9 @@
   docker_container:
     image: prom/prometheus:v2.36.2  
     name: prometheus
+    network_mode: main
+    networks:
+      - name: main
     user: 1001
     container_default_behavior: compatibility
     restart_policy: always

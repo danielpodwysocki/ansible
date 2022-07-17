@@ -1,4 +1,8 @@
 ---
+- name: Create a main network
+  community.docker.docker_network:
+    name: main
+
 # configuration reference:
 # https://github.com/prometheus/node_exporter
 - name: deploy the node exporter
@@ -17,6 +21,9 @@
   docker_container:
     image: gcr.io/cadvisor/cadvisor:v0.39.3
     name: cadvisor
+    network_mode: main
+    networks:
+      - name: main
     container_default_behavior: compatibility
     restart_policy: always
     ports:

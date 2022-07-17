@@ -10,3 +10,5 @@ ui_config{
 # how many servers we expect there to be in the cluster
 bootstrap_expect=1
 
+client_addr="127.0.0.1  {% raw %}{{ GetPrivateInterfaces | include \"network\" \"{% endraw %}{{ consul_subnet }}{% raw %}\" | attr \"address\" }}{% endraw %}"
+

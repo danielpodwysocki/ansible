@@ -1,0 +1,2 @@
+consul_subnet: 172.21.0.0/16
+consul_retry_join: 172.21.0.10

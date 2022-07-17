@@ -1,8 +1,2 @@
----
 - name: Reload the consul config
   command: "/usr/bin/consul reload"
-
-- name: Restart the consul service
-  service:
-    state: restarted
-    name: consul

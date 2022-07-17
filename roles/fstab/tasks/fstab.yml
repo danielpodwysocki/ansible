@@ -10,5 +10,5 @@
     path: "{{ item.target }}"
     src: "{{ item.device }}"
     state: mounted
-    fstype: ext4
+    fstype: "{{ item.fstype }}"
   with_items: "{{ fstab_mounts }}"

@@ -11,7 +11,7 @@
     state: directory
 
 - name: deploy prometheus.yml
-  copy:
+  template:
     src: prometheus.yml
     dest: /etc/prometheus.yml
   notify: Reload the prometheus config

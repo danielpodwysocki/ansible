@@ -9,3 +9,18 @@ grafana_admin_password: !vault |
 consul_server: True
 prometheus_consul_api_addr: 172.21.0.10:8500
 
+vgs:
+  - vg: xardas
+    pvs:
+      - /dev/sdb
+lvs:
+  - vg: xardas
+    lv: storage
+    size: 100%FREE
+    fstype: xfs
+
+fstab_mounts:
+  - target: /storage
+    device: /dev/mapper/xardas-storage
+    fstype: xfs
+

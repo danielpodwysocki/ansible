@@ -1,30 +1,25 @@
 ---
-- name: add the Grafana repository
-  copy:
-    src: grafana_rpm.repo
-    dest: /etc/yum.repos.d/grafana_rpm.repo
-    mode: 0644
-    owner: root
-    group: root
 
-- name: Install grafana
-  package:
+- name: create /storage/grafana
+  file:
+    path: /storage/grafana
+    state: directory
+    owner: 472
+
+- name: deploy the grafana container
+  docker_container:
+    image: grafana/grafana-enterprise:9.0.3
     name: grafana
-    state: present
-
-- name: Template out and deploy the grafana.ini 
-  template:
-    src: "{{ grafana_ini_filename }}"
-    dest: /etc/grafana/grafana.ini
-    mode: 0640
-    owner: root
-    group: grafana
-  when: grafana_ini_filename is defined
-  notify: Restart the grafana-server service
-
-- name: Start and enable grafana-server
-  service:
-    name: grafana-server
-    state: started
-    enabled: yes
-
+    network_mode: main
+    networks:
+      - name: main
+    container_default_behavior: compatibility
+    restart_policy: always
+    volumes:
+      - /storage/grafana:/var/lib/grafana
+# ref: https://grafana.com/docs/grafana/next/setup-grafana/configure-grafana/#configure-with-environment-variables
+    env:
+      GF_SECURITY_ADMIN_PASSWORD: "{{ grafana_admin_password }}"
+    ports:
+      - "3000:3000"
+      

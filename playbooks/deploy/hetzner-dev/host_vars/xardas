@@ -16,7 +16,7 @@ vgs:
 lvs:
   - vg: xardas
     lv: storage
-    size: 100%FREE
+    size: 100%VG
     fstype: xfs
 
 fstab_mounts:

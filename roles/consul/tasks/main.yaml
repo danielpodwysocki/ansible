@@ -19,13 +19,6 @@
     group: root
     mode: '0750' 
 
-- name: Start and enable the service
-  service:
-    name: consul
-    state: started
-    enabled: yes
-
-
 - name: deploy the consul-server.hcl
   template:
     src: consul-server.hcl
@@ -42,4 +35,10 @@
     owner: consul
     group: consul
   notify: Reload the consul config
+
+- name: Start and enable the service
+  service:
+    name: consul
+    state: started
+    enabled: yes
 

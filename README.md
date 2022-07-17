@@ -80,3 +80,11 @@ export HCLOUD_TOKEN=$HCLOUD_TOKEN_PROD && ansible-playbook playbooks/deploy/hetz
 export HCLOUD_TOKEN=$HCLOUD_TOKEN_DEV && ansible-playbook playbooks/deploy/hetzner-dev/hetzner-dev.yaml --ask-vault-password
 
 ```
+
+
+## General concepts
+
+Most of the services are ran in docker - it is deployed on all hosts
+
+There is a network called `main` created by default, most new services should be attached to it.
+

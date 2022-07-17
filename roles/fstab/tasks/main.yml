@@ -1,0 +1,4 @@
+---
+- include: fstab.yml
+  tags:
+    - role_fstab

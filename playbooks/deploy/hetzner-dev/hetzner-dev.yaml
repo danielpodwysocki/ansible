@@ -12,7 +12,7 @@
     consul_retry_join: 172.21.0.10
 
 - hosts:
-    - hcloud
+    - xardas
   remote_user: root
   roles:
     #- grafana

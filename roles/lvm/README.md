@@ -14,7 +14,13 @@ vgs:
 lvs:
   - vg: xardas
     lv: storage
-    size: 100%FREE
+    size: 100%VG
     fstype: xfs
 
 ```
+
+## pitfalls
+
+When creating LVM by hand it's common to use %FREE to indicate size, for example `100%FREE`
+This needs to be avoided, since this value will be different between applies, breaking idempotency -  if we use 100%, next run we will have 0 bytes free space.
+

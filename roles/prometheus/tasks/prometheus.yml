@@ -29,6 +29,4 @@
     volumes:
       - /etc/prometheus.yml:/etc/prometheus/prometheus.yml
       - /storage/prometheus:/prometheus
-    ports:
-      - "9090:9090"
 

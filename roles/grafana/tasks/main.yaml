@@ -20,6 +20,8 @@
 # ref: https://grafana.com/docs/grafana/next/setup-grafana/configure-grafana/#configure-with-environment-variables
     env:
       GF_SECURITY_ADMIN_PASSWORD: "{{ grafana_admin_password }}"
-    ports:
-      - "3000:3000"
-      
+    labels:
+      traefik.http.routers.grafana.rule: "Host(`grafana.dev.dapo.tech`)"
+      traefik.enable: "true"
+      traefik.http.routers.whoami.entrypoints: "web"
+

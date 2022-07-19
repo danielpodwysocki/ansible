@@ -20,6 +20,7 @@
     - prometheus
     - role: grafana
       tags: role_grafana
+    - traefik
   vars:
     grafana_ini_filename: grafana.ini.xardas_dev
 
